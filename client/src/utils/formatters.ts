@@ -29,17 +29,18 @@ export const formatDateForInput = (dateString: string | undefined): string => {
 };
 
 export const calculateMEDDICScore = (deal: any): number => {
-  const fields = [
-    'metric',
-    'economic_buyer',
-    'decision_criteria',
-    'decision_process',
-    'identified_pain',
-    'champion',
+  const checkboxFields = [
+    'metric_complete',
+    'economic_buyer_complete',
+    'decision_criteria_complete',
+    'decision_process_complete',
+    'identified_pain_complete',
+    'champion_complete',
+    'competition_complete',
   ];
   
-  const completed = fields.filter(field => deal[field] && deal[field].trim() !== '').length;
-  return Math.round((completed / fields.length) * 100);
+  const completed = checkboxFields.filter(field => deal[field] === true || deal[field] === 1).length;
+  return Math.round((completed / checkboxFields.length) * 100);
 };
 
 export const getMEDDICStatus = (score: number): { label: string; color: string } => {

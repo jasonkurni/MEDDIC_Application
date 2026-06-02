@@ -57,6 +57,13 @@ const DealDetail = () => {
         next_actions: data.next_actions || '',
         action_date: formatDateForInput(data.action_date) || '',
         action_owner: data.action_owner || '',
+        metric_complete: data.metric_complete || false,
+        economic_buyer_complete: data.economic_buyer_complete || false,
+        decision_criteria_complete: data.decision_criteria_complete || false,
+        decision_process_complete: data.decision_process_complete || false,
+        identified_pain_complete: data.identified_pain_complete || false,
+        champion_complete: data.champion_complete || false,
+        competition_complete: data.competition_complete || false,
       });
     } catch (err) {
       alert('Failed to load deal. Please try again.');
@@ -89,6 +96,13 @@ const DealDetail = () => {
         next_actions: data.next_actions,
         action_date: data.action_date || undefined,
         action_owner: data.action_owner,
+        metric_complete: data.metric_complete,
+        economic_buyer_complete: data.economic_buyer_complete,
+        decision_criteria_complete: data.decision_criteria_complete,
+        decision_process_complete: data.decision_process_complete,
+        identified_pain_complete: data.identified_pain_complete,
+        champion_complete: data.champion_complete,
+        competition_complete: data.competition_complete,
       };
 
       if (isEditMode) {
@@ -269,9 +283,19 @@ const DealDetail = () => {
             
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Metric
-                </label>
+                <div className="flex items-center gap-2 mb-1">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Metric
+                  </label>
+                  <label className="flex items-center gap-1 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      {...register('metric_complete')}
+                      className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                    />
+                    <span className="text-xs text-gray-600">Complete</span>
+                  </label>
+                </div>
                 <textarea
                   {...register('metric')}
                   rows={3}
@@ -281,9 +305,19 @@ const DealDetail = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Economic Buyer
-                </label>
+                <div className="flex items-center gap-2 mb-1">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Economic Buyer
+                  </label>
+                  <label className="flex items-center gap-1 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      {...register('economic_buyer_complete')}
+                      className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                    />
+                    <span className="text-xs text-gray-600">Complete</span>
+                  </label>
+                </div>
                 <input
                   type="text"
                   {...register('economic_buyer')}
@@ -293,9 +327,19 @@ const DealDetail = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Decision Criteria
-                </label>
+                <div className="flex items-center gap-2 mb-1">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Decision Criteria
+                  </label>
+                  <label className="flex items-center gap-1 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      {...register('decision_criteria_complete')}
+                      className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                    />
+                    <span className="text-xs text-gray-600">Complete</span>
+                  </label>
+                </div>
                 <textarea
                   {...register('decision_criteria')}
                   rows={3}
@@ -305,9 +349,19 @@ const DealDetail = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Decision Process
-                </label>
+                <div className="flex items-center gap-2 mb-1">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Decision Process
+                  </label>
+                  <label className="flex items-center gap-1 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      {...register('decision_process_complete')}
+                      className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                    />
+                    <span className="text-xs text-gray-600">Complete</span>
+                  </label>
+                </div>
                 <textarea
                   {...register('decision_process')}
                   rows={3}
@@ -317,9 +371,19 @@ const DealDetail = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Identified Pain
-                </label>
+                <div className="flex items-center gap-2 mb-1">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Identified Pain
+                  </label>
+                  <label className="flex items-center gap-1 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      {...register('identified_pain_complete')}
+                      className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                    />
+                    <span className="text-xs text-gray-600">Complete</span>
+                  </label>
+                </div>
                 <textarea
                   {...register('identified_pain')}
                   rows={3}
@@ -329,9 +393,19 @@ const DealDetail = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Champion
-                </label>
+                <div className="flex items-center gap-2 mb-1">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Champion
+                  </label>
+                  <label className="flex items-center gap-1 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      {...register('champion_complete')}
+                      className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                    />
+                    <span className="text-xs text-gray-600">Complete</span>
+                  </label>
+                </div>
                 <input
                   type="text"
                   {...register('champion')}
@@ -341,9 +415,19 @@ const DealDetail = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Competition
-                </label>
+                <div className="flex items-center gap-2 mb-1">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Competition
+                  </label>
+                  <label className="flex items-center gap-1 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      {...register('competition_complete')}
+                      className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                    />
+                    <span className="text-xs text-gray-600">Complete</span>
+                  </label>
+                </div>
                 <textarea
                   {...register('competition')}
                   rows={3}

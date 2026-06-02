@@ -44,19 +44,24 @@ export const exportDealToPDF = (deal: Deal): void => {
   
   autoTable(doc, {
     startY: finalY + 20,
-    head: [['Component', 'Details']],
+    head: [['Component', 'Status', 'Details']],
     body: [
-      ['Metric', deal.metric || ''],
-      ['Economic Buyer', deal.economic_buyer || ''],
-      ['Decision Criteria', deal.decision_criteria || ''],
-      ['Decision Process', deal.decision_process || ''],
-      ['Identified Pain', deal.identified_pain || ''],
-      ['Champion', deal.champion || ''],
-      ['Competition', deal.competition || ''],
+      ['Metric', deal.metric_complete ? '✓ Complete' : '○ Incomplete', deal.metric || ''],
+      ['Economic Buyer', deal.economic_buyer_complete ? '✓ Complete' : '○ Incomplete', deal.economic_buyer || ''],
+      ['Decision Criteria', deal.decision_criteria_complete ? '✓ Complete' : '○ Incomplete', deal.decision_criteria || ''],
+      ['Decision Process', deal.decision_process_complete ? '✓ Complete' : '○ Incomplete', deal.decision_process || ''],
+      ['Identified Pain', deal.identified_pain_complete ? '✓ Complete' : '○ Incomplete', deal.identified_pain || ''],
+      ['Champion', deal.champion_complete ? '✓ Complete' : '○ Incomplete', deal.champion || ''],
+      ['Competition', deal.competition_complete ? '✓ Complete' : '○ Incomplete', deal.competition || ''],
     ],
     theme: 'grid',
     headStyles: { fillColor: [37, 99, 235] },
     styles: { fontSize: 10 },
+    columnStyles: {
+      0: { cellWidth: 40 },
+      1: { cellWidth: 30 },
+      2: { cellWidth: 'auto' },
+    },
   });
   
   // Action Items Section

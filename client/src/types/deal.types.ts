@@ -17,6 +17,14 @@ export interface Deal {
   next_actions?: string;
   action_date?: string;
   action_owner?: string;
+  // MEDDIC completion checkboxes
+  metric_complete?: boolean;
+  economic_buyer_complete?: boolean;
+  decision_criteria_complete?: boolean;
+  decision_process_complete?: boolean;
+  identified_pain_complete?: boolean;
+  champion_complete?: boolean;
+  competition_complete?: boolean;
   created_at?: string;
   updated_at?: string;
 }
@@ -46,6 +54,14 @@ export interface DealFormData {
   next_actions: string;
   action_date: string;
   action_owner: string;
+  // MEDDIC completion checkboxes
+  metric_complete: boolean;
+  economic_buyer_complete: boolean;
+  decision_criteria_complete: boolean;
+  decision_process_complete: boolean;
+  identified_pain_complete: boolean;
+  champion_complete: boolean;
+  competition_complete: boolean;
 }
 
 // Made with Bob

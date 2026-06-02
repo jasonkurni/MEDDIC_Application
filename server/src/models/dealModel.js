@@ -37,8 +37,11 @@ const dealModel = {
           company_name, opportunity_description, why_ibm, project_name,
           business_owner, close_date, value_usd, metric, economic_buyer,
           decision_criteria, decision_process, identified_pain, champion,
-          competition, next_actions, action_date, action_owner
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          competition, next_actions, action_date, action_owner,
+          metric_complete, economic_buyer_complete, decision_criteria_complete,
+          decision_process_complete, identified_pain_complete, champion_complete,
+          competition_complete
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `;
       
       const params = [
@@ -59,6 +62,13 @@ const dealModel = {
         dealData.next_actions || null,
         dealData.action_date || null,
         dealData.action_owner || null,
+        dealData.metric_complete ? 1 : 0,
+        dealData.economic_buyer_complete ? 1 : 0,
+        dealData.decision_criteria_complete ? 1 : 0,
+        dealData.decision_process_complete ? 1 : 0,
+        dealData.identified_pain_complete ? 1 : 0,
+        dealData.champion_complete ? 1 : 0,
+        dealData.competition_complete ? 1 : 0,
       ];
 
       db.run(sql, params, function(err) {
@@ -96,6 +106,13 @@ const dealModel = {
           next_actions = ?,
           action_date = ?,
           action_owner = ?,
+          metric_complete = ?,
+          economic_buyer_complete = ?,
+          decision_criteria_complete = ?,
+          decision_process_complete = ?,
+          identified_pain_complete = ?,
+          champion_complete = ?,
+          competition_complete = ?,
           updated_at = CURRENT_TIMESTAMP
         WHERE id = ?
       `;
@@ -118,6 +135,13 @@ const dealModel = {
         dealData.next_actions || null,
         dealData.action_date || null,
         dealData.action_owner || null,
+        dealData.metric_complete ? 1 : 0,
+        dealData.economic_buyer_complete ? 1 : 0,
+        dealData.decision_criteria_complete ? 1 : 0,
+        dealData.decision_process_complete ? 1 : 0,
+        dealData.identified_pain_complete ? 1 : 0,
+        dealData.champion_complete ? 1 : 0,
+        dealData.competition_complete ? 1 : 0,
         id,
       ];
 
