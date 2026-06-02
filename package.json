@@ -1,0 +1,21 @@
+{
+  "name": "meddic-deal-health-check",
+  "version": "1.0.0",
+  "description": "MEDDIC Deal Health Check Application - A modern web-based MEDDIC qualification tracker",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "client": "cd client && npm run dev",
+    "server": "cd server && npm run dev",
+    "build": "cd client && npm run build",
+    "preview": "cd client && npm run preview",
+    "init-db": "cd server && npm run init-db",
+    "install-all": "npm install && cd client && npm install && cd ../server && npm install"
+  },
+  "keywords": ["meddic", "sales", "crm", "deal-tracking"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
