@@ -18,19 +18,29 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
+    let dealsToFilter = deals;
+    
     if (searchQuery.trim() === '') {
-      setFilteredDeals(deals);
+      setFilteredDeals(sortDealsByCloseDate(dealsToFilter));
     } else {
       const query = searchQuery.toLowerCase();
-      const filtered = deals.filter(
+      const filtered = dealsToFilter.filter(
         (deal) =>
           deal.company_name.toLowerCase().includes(query) ||
           deal.opportunity_description?.toLowerCase().includes(query) ||
           deal.project_name?.toLowerCase().includes(query)
       );
-      setFilteredDeals(filtered);
+      setFilteredDeals(sortDealsByCloseDate(filtered));
     }
   }, [searchQuery, deals]);
+
+  const sortDealsByCloseDate = (dealsToSort: Deal[]): Deal[] => {
+    return [...dealsToSort].sort((a, b) => {
+      const dateA = new Date(a.close_date || '9999-12-31');
+      const dateB = new Date(b.close_date || '9999-12-31');
+      return dateA.getTime() - dateB.getTime();
+    });
+  };
 
   const loadDeals = async () => {
     try {
