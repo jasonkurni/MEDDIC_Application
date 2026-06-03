@@ -63,6 +63,7 @@ const DealDetail = () => {
         next_actions: data.next_actions || '',
         action_date: formatDateForInput(data.action_date) || '',
         action_owner: data.action_owner || '',
+        notes: data.notes || '',
         metric_complete: data.metric_complete || false,
         economic_buyer_complete: data.economic_buyer_complete || false,
         decision_criteria_complete: data.decision_criteria_complete || false,
@@ -102,6 +103,7 @@ const DealDetail = () => {
         next_actions: data.next_actions,
         action_date: data.action_date || undefined,
         action_owner: data.action_owner,
+        notes: data.notes,
         metric_complete: data.metric_complete,
         economic_buyer_complete: data.economic_buyer_complete,
         decision_criteria_complete: data.decision_criteria_complete,
@@ -183,6 +185,7 @@ const DealDetail = () => {
         next_actions: currentValues.next_actions,
         action_date: currentValues.action_date || undefined,
         action_owner: currentValues.action_owner,
+        notes: currentValues.notes,
         metric_complete: currentValues.metric_complete,
         economic_buyer_complete: currentValues.economic_buyer_complete,
         decision_criteria_complete: currentValues.decision_criteria_complete,
@@ -645,6 +648,23 @@ How do they get measured internally and compensated? Align to how we can de-risk
                   />
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Notes Section */}
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">Customer Conversation Notes</h2>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Notes
+              </label>
+              <textarea
+                {...register('notes')}
+                rows={6}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-400"
+                placeholder="Add notes from customer conversations, meetings, and calls..."
+              />
             </div>
           </div>
 

@@ -82,6 +82,22 @@ export const exportDealToPDF = (deal: Deal): void => {
     styles: { fontSize: 10 },
   });
   
+  // Notes Section
+  const finalY3 = (doc as any).lastAutoTable.finalY || 50;
+  doc.setFont('helvetica', 'bold');
+  doc.text('Customer Conversation Notes', 14, finalY3 + 15);
+  
+  autoTable(doc, {
+    startY: finalY3 + 20,
+    head: [['Notes']],
+    body: [
+      [deal.notes || 'No notes available'],
+    ],
+    theme: 'grid',
+    headStyles: { fillColor: [37, 99, 235] },
+    styles: { fontSize: 10 },
+  });
+  
   // Footer
   const pageCount = doc.getNumberOfPages();
   for (let i = 1; i <= pageCount; i++) {

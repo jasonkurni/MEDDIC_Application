@@ -40,8 +40,8 @@ const dealModel = {
           competition, next_actions, action_date, action_owner,
           metric_complete, economic_buyer_complete, decision_criteria_complete,
           decision_process_complete, identified_pain_complete, champion_complete,
-          competition_complete
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          competition_complete, notes
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `;
       
       const params = [
@@ -69,6 +69,7 @@ const dealModel = {
         dealData.identified_pain_complete ? 1 : 0,
         dealData.champion_complete ? 1 : 0,
         dealData.competition_complete ? 1 : 0,
+        dealData.notes || null,
       ];
 
       db.run(sql, params, function(err) {
@@ -113,6 +114,7 @@ const dealModel = {
           identified_pain_complete = ?,
           champion_complete = ?,
           competition_complete = ?,
+          notes = ?,
           updated_at = CURRENT_TIMESTAMP
         WHERE id = ?
       `;
@@ -142,6 +144,7 @@ const dealModel = {
         dealData.identified_pain_complete ? 1 : 0,
         dealData.champion_complete ? 1 : 0,
         dealData.competition_complete ? 1 : 0,
+        dealData.notes || null,
         id,
       ];
 

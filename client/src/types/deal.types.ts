@@ -17,6 +17,7 @@ export interface Deal {
   next_actions?: string;
   action_date?: string;
   action_owner?: string;
+  notes?: string;
   // MEDDIC completion checkboxes
   metric_complete?: boolean;
   economic_buyer_complete?: boolean;
@@ -54,6 +55,7 @@ export interface DealFormData {
   next_actions: string;
   action_date: string;
   action_owner: string;
+  notes: string;
   // MEDDIC completion checkboxes
   metric_complete: boolean;
   economic_buyer_complete: boolean;
